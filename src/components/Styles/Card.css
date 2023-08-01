@@ -1,0 +1,33 @@
+.card-textarea {
+    margin:  10px auto;
+    background-color: #1D2125;
+    width: 240px;
+    height: auto;
+    border-radius: 10px;
+    cursor: grab;
+    color: aliceblue;
+    padding: 10px 10px;
+    resize: vertical;
+    border-style: none;
+
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.card-textarea:hover {
+    background-color: #4f565e;
+}
+
+.card-textarea:active {
+    cursor: grabbing;
+}
+
+.card-textarea.dragging {
+    opacity: .5;
+    transform: scale(.8);
+}
+
+.delete-btn {
+    position: absolute;
+}
+
+
