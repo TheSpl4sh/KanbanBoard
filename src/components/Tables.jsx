@@ -40,13 +40,13 @@ const Tables = () => {
     }
 
     const dragStart = event => {
-        if (event.target.className.includes('card-textarea')) {
+        if (event.target.className.includes('card-container')) {
             event.target.classList.add('dragging')
         }
     }
     
     const dragEnd = event => {
-        if (event.target.className.includes('card-textarea')) {
+        if (event.target.className.includes('card-container')) {
             event.target.classList.remove('dragging')
         }
     }
@@ -77,6 +77,12 @@ const Tables = () => {
         setCards(current => [...current, {id: maxId(), state: 'done', text: ''}])
     }
 
+    const handleDeleteTodo = id => {
+        console.log(id)
+        setCards(current =>{ 
+            return current.filter(card => card.id !== id)})
+    }
+
     return (
         <>
             <div className="background-image" style={{backgroundImage:`url(${backgroundImage})`}}>
@@ -87,43 +93,54 @@ const Tables = () => {
 
                 <div className="tables-ground">
                     <div className="column column-todo"
-                    data-column='todo'
-                    onDragEnter={dragEnter}
-                    onDragLeave={dragLeave}
-                    onDragOver={allowDrop}
-                    onDrop={drop}
+                        data-column='todo'
+                        onDragEnter={dragEnter}
+                        onDragLeave={dragLeave}
+                        onDragOver={allowDrop}
+                        onDrop={drop}
                     >
                         <h2>Todo</h2>
-                        {cards.filter(card => card.state === 'todo').map(todo=> ( 
-                            <Card {...todo} key={todo.id} value={todo.text} onChange={(value)=> 
-                                setCards(cards => {
-                                    const newCards = [...cards];
-                                    newCards.find(elem => elem.id === todo.id).text = value
-                                    return newCards;
-                                  })
-                            } />
+                        {cards.filter(card => card.state === 'todo').map(todo => ( 
+                            <Card 
+                                {...todo} 
+                                key={todo.id} 
+                                value={todo.text} 
+                                onChange={(value)=> 
+                                    setCards(cards => {
+                                        const newCards = [...cards];
+                                        newCards.find(elem => elem.id === todo.id).text = value
+                                        return newCards;
+                                    })
+                                }
+                                buttonClick={() => handleDeleteTodo(todo.id)}
+                             />
                         ))}
-
                         <Button onClick={ handleClickTodo }/>
                         
                     </div>
 
                     <div className="column column-ip"
-                    data-column='ip'
-                    onDragEnter={dragEnter}
-                    onDragLeave={dragLeave}
-                    onDragOver={allowDrop}
-                    onDrop={drop}
+                        data-column='ip'
+                        onDragEnter={dragEnter}
+                        onDragLeave={dragLeave}
+                        onDragOver={allowDrop}
+                        onDrop={drop}
                     >
                         <h2>In process</h2>
                         {cards.filter(card => card.state === 'ip').map(todo => (
-                           <Card {...todo} key={todo.id} value={todo.text} onChange={(value)=> 
-                            setCards(cards => {
-                                const newCards = [...cards];
-                                newCards.find(elem => elem.id === todo.id).text = value
-                                return newCards;
-                              })
-                        } />
+                           <Card 
+                           {...todo} 
+                           key={todo.id} 
+                           value={todo.text} 
+                           onChange={(value)=> 
+                               setCards(cards => {
+                                   const newCards = [...cards];
+                                   newCards.find(elem => elem.id === todo.id).text = value
+                                   return newCards;
+                               })
+                           }
+                           buttonClick={() => handleDeleteTodo(todo.id)}
+                        />
                         ))}
 
                         <Button onClick={handleClickIp} />
@@ -131,21 +148,27 @@ const Tables = () => {
                     </div>
                         
                     <div className="column column-done"
-                    data-column='done'
-                    onDragEnter={dragEnter}
-                    onDragLeave={dragLeave}
-                    onDragOver={allowDrop}
-                    onDrop={drop}
+                        data-column='done'
+                        onDragEnter={dragEnter}
+                        onDragLeave={dragLeave}
+                        onDragOver={allowDrop}
+                        onDrop={drop}
                     >
                         <h2>Done</h2>
                         {cards.filter(card => card.state === 'done').map(todo => (
-                            <Card {...todo} key={todo.id} value={todo.text} onChange={(value)=> 
+                            <Card 
+                            {...todo} 
+                            key={todo.id} 
+                            value={todo.text} 
+                            onChange={(value)=> 
                                 setCards(cards => {
                                     const newCards = [...cards];
                                     newCards.find(elem => elem.id === todo.id).text = value
                                     return newCards;
-                                  })
-                            } />
+                                })
+                            }
+                            buttonClick={() => handleDeleteTodo(todo.id)}
+                         />
                         ))}
 
                         <Button onClick={handleClickDone}/>

@@ -18,28 +18,6 @@
     color: white;
 }
 
-
-.card-container {
-    margin:  10px auto;
-    background-color: #1D2125;
-    width: 240px;
-    height: 40px;
-    border-radius: 10px;
-
-    cursor: grab;
-    
-    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.card-container:active {
-    cursor: grabbing;
-}
-
-.card-container.dragging {
-    opacity: .5;
-    transform: scale(.8);
-}
-
 .card-adding {
     width: 260px;
     height: 30px;
