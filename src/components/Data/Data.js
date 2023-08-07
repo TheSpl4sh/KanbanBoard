@@ -2,7 +2,7 @@ const data = [
     {
         id: 1, 
         state: 'todo',
-        text: 'First task'
+        text: ''
     }/* ,
     {
         id: 2, 

@@ -19,9 +19,9 @@ const Card = (props) => {
                 placeholder='Write something...'
             >
             </textarea>
-                {<button className='delete-btn'>
+               {/*  {<button className='delete-btn'>
                     <BiTrash className='bin-img'/>
-                </button>}
+                </button>} */}
 
             
         
